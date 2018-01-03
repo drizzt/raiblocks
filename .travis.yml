@@ -3,6 +3,9 @@ language: cpp
 os:
   - linux
 
+sudo: required
+dist: xenial
+
 cache:
   apt: true
   ccache: true
@@ -19,8 +22,11 @@ compiler:
 
 addons:
   apt:
+    sources:
+      - sourceline: 'ppa:tobydox/mingw-w64'
     packages:
       - qtbase5-dev
+      - qt5base-mingw-w64
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
